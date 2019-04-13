@@ -1,0 +1,16 @@
+{
+  "name": "starterpack-robert-he",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": "https://github.com/dartmouth-cs52-19S/starterpack-robert-he.git",
+  "author": "Robert He <robert.he.19@dartmouth.edu>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1"
+  }
+}
