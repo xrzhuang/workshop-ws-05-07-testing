@@ -9,9 +9,13 @@ body {
   margin: 50px;
 }
 
+.search-bar-container {
+  margin-bottom: 40px;
+  margin-left: 110px;
+}
 
 #search-bar {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 
   input {
     font-size: 1.5em;
@@ -19,12 +23,21 @@ body {
   }
 }
 
+#video-section-container {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
 #video-detail {
-  width: 100%;
+  width: 75%;
+  height: auto;
+  align-self:left;
 }
 
 #video-section {
   display: flex;
+  justify-content: space-around;
 
   li {
     list-style: none;
@@ -37,4 +50,8 @@ body {
     background: darken( $backgroundcolor, 10% );
   }
 
+}
+
+.video-bar {
+  align-self:flex-end;
 }
