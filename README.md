@@ -93,7 +93,7 @@ describe('Get video tests', () => {
 
 ```
 
-Great! So we're being good top down developers. Now we can go ahead and write our function viewCountByVideo. 🚀 Go ahead into the `src/youtube-api.js` and add this function: 
+Great! So we're being good top down developers. Now we can go ahead and write our function viewCountByVideo. 🚀 Go ahead into the `src/youtube-api.js` and add this function before `youtubeSearch`: 
 
 ```javascript
 export const viewCountByVideo = (videoId) => {
@@ -413,6 +413,19 @@ All files       |    81.82 |      100 |       75 |    81.82 |                   
 If you're looking for an even more detailed view, run the html coverage script with `yarn coverageHTML`. This produces an interactive html page. Navigate into the resulting directory `coverage/` in terminal and start a python server with `python -m SimpleHTTPServer 9000` for python2 or `python -m http.server 9000` for python3. In your browser go to `localhost:9000` to view the coverage report.
 
 These scripts both produce output files. It is up to you on whether or not to save these files in your git project. On one hand they maintain a history of test coverage over time, on the other they are not part of the source code of the project. To exclude the files, add `.nyc_output` and `coverage` to your `.gitignore` file.
+
+<details>
+<summary>
+
+`yarn start` giving errors?
+</summary>
+  You may need to reinstall these dependancies from the starterpack, things went awry somehow...
+
+  ```
+  yarn add --dev eslint babel-eslint eslint-loader
+  yarn add --dev eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
+  ```
+</details>
 
 ## What have We Learned?
 
