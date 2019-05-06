@@ -13,7 +13,7 @@ calls to the youtube-api to make sure that it working as expected.
 
 NOTE: It can be a good practice in the development of your final projects,
 for example, to write your tests before you write your functions. This is known
-as Top Down Development and makes sure that your code is high quality and
+as Test Driven Development and makes sure that your code is high quality and
 purpose driven.
 
 🚀 Add this code to your new `src/test/Api.test.js` file.
@@ -93,7 +93,7 @@ describe('Get video tests', () => {
 
 ```
 
-Great! So we're being good top down developers. Now we can go ahead and write our function viewCountByVideo. 🚀 Go ahead into the `src/youtube-api.js` and add this function before `youtubeSearch`: 
+Great! So we're being good Test Driven developers. Now we can go ahead and write our function viewCountByVideo. 🚀 Go ahead into the `src/youtube-api.js` and add this function before `youtubeSearch`: 
 
 ```javascript
 export const viewCountByVideo = (videoId) => {
@@ -417,13 +417,13 @@ These scripts both produce output files. It is up to you on whether or not to sa
 ## What have We Learned?
 
 * [ ] How to implement Mocha and Chai!
-* [ ] The basics of Top Down Development (TDD)
+* [ ] The basics of Test Driven Development (TDD)
 * [ ] A few of the many reasons it is important to maintain good testing practices
 * [ ] A new way to display our code coverage so we can track the effectiveness of our testing in a visual way!
 
 ## Reflection
 
-* [ ] What are the benefits of employing Top Down Development strategies and robust testing in general?
+* [ ] What are the benefits of employing Test Driven Development strategies and robust testing in general?
 * [ ] Why might one want to use Jest over Mocha and vice versa?
 
 Please review the [slides](https://docs.google.com/presentation/d/12tgDnjBk6Xmp61MxjtM9FsQW-c83R5ViF607AXvx74I/edit?usp=sharing) for testing inspiration in the future 😊
