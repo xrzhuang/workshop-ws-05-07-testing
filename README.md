@@ -414,18 +414,14 @@ If you're looking for an even more detailed view, run the html coverage script w
 
 These scripts both produce output files. It is up to you on whether or not to save these files in your git project. On one hand they maintain a history of test coverage over time, on the other they are not part of the source code of the project. To exclude the files, add `.nyc_output` and `coverage` to your `.gitignore` file.
 
-<details>
-<summary>
-
 `yarn start` giving errors?
-</summary>
-  You may need to reinstall these dependancies from the starterpack, things went awry somehow...
 
-  ```
-  yarn add --dev eslint babel-eslint eslint-loader
-  yarn add --dev eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
-  ```
-</details>
+You may need to reinstall these dependancies from the starterpack, things went awry somehow...
+
+```
+yarn add --dev eslint babel-eslint eslint-loader
+yarn add --dev eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
+```
 
 ## What have We Learned?
 
