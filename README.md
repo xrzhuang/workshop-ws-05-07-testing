@@ -5,10 +5,10 @@
 `💻 yarn add mocha chai`
 
 🚀 Let's add a line in our `package.json` file to make sure that we can easily
-run the tests using Mocha. So go to `package.json` and add the line `"testit": "mocha --require @babel/register"` under `"scripts"` section. Oh yeah, you're also
+run the tests using Mocha. So go to `package.json` and add the line `"testit": "mocha --require @babel/register"` inside of the `"scripts"` section. Oh yeah, you're also
 going to want to `yarn add @babel/register`.
 
-🚀 Now, create a `src/test/Api.test.js` file. We are going to be testing the
+🚀 Now, create the directory `src/test`, where we will be keeping our test files, and create file `src/test/Api.test.js` inside of that. We are going to be testing the
 calls to the youtube-api to make sure that it working as expected.
 
 NOTE: It can be a good practice in the development of your final projects,
@@ -28,7 +28,7 @@ const { expect } = require('chai');
 
 describe('Get video tests', () => {
   it('Get a list of videos', () => {
-    return youtubeSearch('vines to wath in class')
+    return youtubeSearch('vines to watch in class')
       .then((response) => {
         // expect an object back
         expect(typeof response).to.equal('object');
@@ -41,10 +41,12 @@ describe('Get video tests', () => {
 });
 ```
 
-What are we doing here? We are describing a set of tests for mocha in the `describe('Get video tests', () => {...}` line.
-Then we write a whole bunch of things we expect this suite of tests to do. Above, we wrote one that should
-"get a list of videos", which we expect to be an object of length 5, where each object has the kind type which
+What are we doing here? We are describing a set of tests for mocha in the `describe('Get video tests', () => {...}` line. We will then write a whole bunch of things we expect this suite of tests to do.
+
+Essentially, we specified that we should "get a list of videos", expected to be an object of length 5, in which each object has a kind, or type, that
 equals "youtube#searchResult"!
+
+🚀 HOLD UP! If you haven't already, add your YouTube API key you created in [Short Assignment 4](http://cs52.me/assignments/sa/react-videos/) to `src/youtube-api.js`. If you have lost it or it has expired, create a new one by following the instuctions in the YouTube API of the Short Assignment.
 
 🚀 Let's see if our youtubeSearch function is working in the way we expect it by running our one test. Run
 
@@ -55,32 +57,15 @@ equals "youtube#searchResult"!
 What just happened? Mocha ran our test file at `src/test/Api.test.js` and told us
 that everything works as we expect! Great!
 
-We have just one file under our test folder that tests one specific function. What
-if we wanted to have a bunch of test files in our test folder? Would we have to run `💻 yarn testit` for each of those files to make sure our app is working correctly? Well, we could... but there's a better way! Let's tell `yarn testit` to run all the files in the test folder and tell us the results from all of them!
+<details>
+<summary>😱 Oh no did it fail???</summary>
+  If you received a 400 or 403 error, make sure you have a working API Key, it may have expired.
+</details>
 
-🚀 Go into your `package.json` file and change the `"testit": "mocha --require @babel/register"` line to `"testit": "mocha 'src/test/**/*.js' --require @babel/register"`. Great! Now mocha will run all of the files in the test folder so we should feel comfortable making separate files to test different components of our app!
-
-Now, lets get some practice with Top Down Development and implement a new feature in our app.
-What this means is that we are going to write the test for our code *before* we write the actual function. Say we want
-to build a toy function that returns the total view count of all the videos displayed on the video list. First, think
-about exactly what we want this function's inputs and outputs to be, and then write the test in accordance to that; then, finally, you can write the function!
-
-<<<<<<< HEAD
-We want to create a function viewCountByVideo that takes one input: the ID of a video, and outputs a number. 
-
-🚀 add this code below our previous test.
-```javascript
-  it('Get view count of video', () => {
-    return viewCountByVideo('TqtLNpkerfo')
-      .then((response) => {
-        expect(response).to.be.a('Number');
-      });
-  });
-```
-
-Your `src/test/Api.test.js` should now look like this: 
 
 ```javascript
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import { youtubeSearch, viewCountByVideo } from '../youtube-api';
 import 'babel-polyfill';
 
@@ -90,20 +75,14 @@ describe('Get video tests', () => {
   it('Get a list of videos', () => {
     return youtubeSearch('vines to watch in class')
       .then((response) => {
-        // console.log(response.all);
-        // console.log(response);
         // expect an object back
-        expect(response.all).to.be.a('Array');
-        // expect(typeof response).to.equal('object');
-        // expect a certain type of data back
-        response.all.forEach((data) => {
+        expect(typeof response).to.equal('object');
+        response.forEach((data) => {
           expect(data.kind).to.equal('youtube#searchResult');
         });
-        // expect a certain length of array object back
-        expect(response.all.length).to.equal(5);
+        expect(response.length).to.equal(5);
       });
   });
-
   it('Get view count of video', () => {
     return viewCountByVideo('TqtLNpkerfo')
       .then((response) => {
@@ -111,6 +90,7 @@ describe('Get video tests', () => {
       });
   });
 });
+
 ```
 
 Great! So we're being good top down developers. Now we can go ahead and write our function viewCountByVideo. 🚀 Go ahead into the `src/youtube-api.js` and add this function: 
@@ -135,13 +115,24 @@ export const viewCountByVideo = (videoId) => {
 };
 ```
 
+And dont forget to add `const STATISTICS_API_URL = 'https://www.googleapis.com/youtube/v3/videos';` to the top
+
 Awesome! Now let's run our tests to make sure everything's working as we expect! `yarn testit`
 
 WOAH! What happened? We failed? 
 
 ![](README_imgs/testFailure.png)
 
-Don't panic. This is actually giving us a lot of good information. So mocha is telling us that our latest "get view count of video" test is failing. Why? Because we expected the function we wrote to return a number, but it is actually returning a string. Oops! Good thing we wrote a test beforehand. Now all we need to do is go into the function `viewCountByVideo` function we just wrote in `src/youtube-api.js` and change the `resolve(response.data.items[0].statistics.viewCount);` line to `resolve(Number(response.data.items[0].statistics.viewCount));`
+Don't panic. This is actually giving us a lot of good information. So mocha is telling us that our latest "get view count of video" test is failing. Why? Because we expected the function we wrote to return a number, but it is actually returning a string. Oops! Good thing we wrote a test beforehand. Now all we need to do is go into the function `viewCountByVideo` function we just wrote in `src/youtube-api.js` and change the
+
+```javascript
+resolve(response.data.items[0].statistics.viewCount);
+```
+line to 
+
+```javascript
+resolve(Number(response.data.items[0].statistics.viewCount));
+```
 
 Great. Run `yarn testit` and you should see that both of our tests are now passing!
 
@@ -164,7 +155,7 @@ Let's try to add some more functionality to our project. Say we want our youtube
   });
 ```
 
-Now change the youtubeSearch function in `src/youtube-api.js` to reflect this new functionality. You might need to `yarn add async` in order for the new code to work. Your code should look like this:
+We will now need to change the youtubeSearch function in `src/youtube-api.js` to reflect this new functionality. You might need to `yarn add async` and add `import { each } from 'async';` to the top of `youtube-api.js` in order for the new code to work. Your code should look like this:
 
 ```javascript
 export const youtubeSearch = (term) => {
@@ -195,7 +186,9 @@ export const youtubeSearch = (term) => {
 };
 ```
 
-Cool! Lets run `yarn testit` to check if we did it right. Great! We're godly coders 😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎.
+Cool! Lets run `yarn testit` to check if we did it right.
+
+Great! We're awesome coders 😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎.
 
 Now in order for the whole thing to work you're going to need to go to `src/index.js` and change `App`'s `search` function to be: 
 
@@ -216,6 +209,7 @@ Now in order for the whole thing to work you're going to need to go to `src/inde
 <br>
 Your `Api.test.js` should look like: 
 
+```javascript
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import { youtubeSearch, viewCountByVideo } from '../youtube-api';
@@ -246,9 +240,11 @@ describe('Get video tests', () => {
       });
   });
 });
+```
 
 Your `youtube-api.js` should look like: 
 
+```javascript
 import axios from 'axios';
 import { each } from 'async';
 
@@ -303,6 +299,7 @@ export const youtubeSearch = (term) => {
   });
 };
 export default youtubeSearch;
+```
 
 </details>
 
@@ -419,4 +416,3 @@ All files       |    81.82 |      100 |       75 |    81.82 |                   
 If you're looking for an even more detailed view, run the html coverage script with `yarn coverageHTML`. This produces an interactive html page. Navigate into the resulting directory `coverage/` in terminal and start a python server with `python -m SimpleHTTPServer 9000` for python2 or `python -m http.server 9000` for python3. In your browser go to `localhost:9000` to view the coverage report.
 
 These scripts both produce output files. It is up to you on whether or not to save these files in your git project. On one hand they maintain a history of test coverage over time, on the other they are not part of the source code of the project. To exclude the files, add `.nyc_output` and `coverage` to your `.gitignore` file.
->>>>>>> fc4c3ffbd804aaf216e350377c57a702523ad97a

@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = 'https://www.googleapis.com/youtube/v3/search';
 const API_KEY = 'YOUR_KEY';
 
-const youtubeSearch = (term) => {
+export const youtubeSearch = (term) => {
   const params = {
     part: 'snippet',
     key: API_KEY,
@@ -22,5 +22,3 @@ const youtubeSearch = (term) => {
       });
   });
 };
-
-export default youtubeSearch;
