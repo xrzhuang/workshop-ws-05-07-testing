@@ -414,15 +414,6 @@ If you're looking for an even more detailed view, run the html coverage script w
 
 These scripts both produce output files. It is up to you on whether or not to save these files in your git project. On one hand they maintain a history of test coverage over time, on the other they are not part of the source code of the project. To exclude the files, add `.nyc_output` and `coverage` to your `.gitignore` file.
 
-`yarn start` giving errors?
-
-You may need to reinstall these dependancies from the starterpack, things went awry somehow...
-
-```
-yarn add --dev eslint babel-eslint eslint-loader
-yarn add --dev eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
-```
-
 ## What have We Learned?
 
 * [ ] How to implement Mocha and Chai!
@@ -444,3 +435,8 @@ Please review the [slides](https://docs.google.com/presentation/d/12tgDnjBk6Xmp6
 * https://instea.sk/2016/08/testing-react-applications-with-karma-jest-or-mocha/
 * https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a
 * https://istanbul.js.org/docs/tutorials/mocha/
+* https://istanbul.js.org/docs/tutorials/mocha/
+* https://www.sitepoint.com/unit-test-javascript-mocha-chai/
+* https://www.npmtrends.com/
+* https://www.chaijs.com/
+
