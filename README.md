@@ -207,6 +207,7 @@ Now in order for the whole thing to work you're going to need to go to `src/inde
 <details>
 <summary>In case nothing is working...</summary>
 <br>
+
 Your `Api.test.js` should look like: 
 
 ```javascript
@@ -354,7 +355,7 @@ it('Check for amount of children equal to zero', () => {
   });
 ```
 
-These two tests check that the SearchBar has one child, and that it has a state field with key `seaarchterm` and value `''`. If you take a look at `search_bar.js` you will see why we are checking for this state field. Exit the file and run your tests.
+These two tests check that the SearchBar has one child, and that it has a state field with key `searchterm` and value `''`. If you take a look at `search_bar.js` you will see why we are checking for this state field. Exit the file and run your tests.
 
 Seems like one of our tests failed. It turns out the SearchBar has no children, and so our second test has failed. Change `expect(wrapper.children(SearchBar)).to.have.lengthOf(1);` to `expect(wrapper.children(SearchBar)).to.have.lengthOf(0);` and run `yarn testit` again.
 
@@ -379,14 +380,10 @@ describe('VideoDetail', () => {
 });
 ```
 
-These tests are now on the `VideoDetail` component. What do they do? One checks for a proper class name, another for a proper ID, and the last for the correct prop. Notice that the `VideoDetail` component simply renders `Loading...` if it receives no passed prop of name `video`. Here we check for this because the component is being shallow rendered. Do you remember what shallow rendering is vs. full rendering?
+These tests are now on the `VideoDetail` component. What do they do? One checks for a proper class name, another for a proper ID, and the last for the correct prop. Notice that the `VideoDetail` component simply renders `Loading...` if it receives no passed prop of name `video`. Here we check for this because the component is being shallow rendered. Do you remember the difference between shallow rendering and full rendering?
 
 💻 Run `yarn testit` one last time. All your tests pass now. Congrats!
 
-
-
-
-=======
 ## Code Coverage
 
 At this point you've added some unit tests to your code; how do you know if you've tested all of your code? You could go through your source code and test cases by hand to determine how much of your coded is covered by tests, but that's too much work. Instead we'll have istanbul generate a code coverage report.
@@ -416,3 +413,25 @@ All files       |    81.82 |      100 |       75 |    81.82 |                   
 If you're looking for an even more detailed view, run the html coverage script with `yarn coverageHTML`. This produces an interactive html page. Navigate into the resulting directory `coverage/` in terminal and start a python server with `python -m SimpleHTTPServer 9000` for python2 or `python -m http.server 9000` for python3. In your browser go to `localhost:9000` to view the coverage report.
 
 These scripts both produce output files. It is up to you on whether or not to save these files in your git project. On one hand they maintain a history of test coverage over time, on the other they are not part of the source code of the project. To exclude the files, add `.nyc_output` and `coverage` to your `.gitignore` file.
+
+## Summary of What We have Learned
+
+* [ ] How to implement Mocha and Chai!
+* [ ] The basics of Top Down Development (TDD)
+* [ ] A few of the many reasons it is important to maintain good testing practices
+* [ ] A new way to display our code coverage so we can track the effectiveness of our testing in a visual way!
+
+## Reflection
+
+* [ ] What are the benefits of employing Top Down Development strategies and robust testing in general?
+* [ ] Why might one want to use Jest over Mocha and vice versa?
+
+Please review the [slides](https://docs.google.com/presentation/d/12tgDnjBk6Xmp61MxjtM9FsQW-c83R5ViF607AXvx74I/edit?usp=sharing) for testing inspiration in the future 😊
+
+## Resources
+
+* https://jestjs.io/
+* https://medium.com/@dschmidt1992/jest-snapshot-testing-3ef9fa1222bb
+* https://instea.sk/2016/08/testing-react-applications-with-karma-jest-or-mocha/
+* https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a
+* https://istanbul.js.org/docs/tutorials/mocha/
