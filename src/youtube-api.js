@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'https://www.googleapis.com/youtube/v3/search';
-const API_KEY = 'AIzaSyCQru0b4I399-e-GFiT9CqH0lEL67JrLGc';
+const API_KEY = 'YOUR_KEY';
 
 const youtubeSearch = (term) => {
   const params = {
