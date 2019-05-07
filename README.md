@@ -1,6 +1,10 @@
+## Testing
+
+We're going to add some unit tests to the code from sa4. Go ahead and fork this repo and clone it locally. It should be the same as your sa4 code, but clone this one just to keep things consistent. Once you clone the repo, don't forget to start out with a `yarn add`.
+
 ## Mocha and Chai Testing
 
-🚀 First lets install the necessary good stuff:
+🚀 Next lets install the necessary good stuff:
 
 `💻 yarn add mocha chai`
 
@@ -93,7 +97,7 @@ describe('Get video tests', () => {
 
 ```
 
-Great! So we're being good Test Driven developers. Now we can go ahead and write our function viewCountByVideo. 🚀 Go ahead into the `src/youtube-api.js` and add this function before `youtubeSearch`: 
+Great! So we're being good Test Driven developers. Now we can go ahead and write our function viewCountByVideo. 🚀 Go ahead into the `src/youtube-api.js` and add this function before `youtubeSearch`:
 
 ```javascript
 export const viewCountByVideo = (videoId) => {
@@ -119,7 +123,7 @@ And dont forget to add `const STATISTICS_API_URL = 'https://www.googleapis.com/y
 
 Awesome! Now let's run our tests to make sure everything's working as we expect! `yarn testit`
 
-WOAH! What happened? We failed? 
+WOAH! What happened? We failed?
 
 ![](README_imgs/testFailure.png)
 
@@ -128,7 +132,7 @@ Don't panic. This is actually giving us a lot of good information. So mocha is t
 ```javascript
 resolve(response.data.items[0].statistics.viewCount);
 ```
-line to 
+line to
 
 ```javascript
 resolve(Number(response.data.items[0].statistics.viewCount));
@@ -136,7 +140,7 @@ resolve(Number(response.data.items[0].statistics.viewCount));
 
 Great. Run `yarn testit` and you should see that both of our tests are now passing!
 
-Let's try to add some more functionality to our project. Say we want our youtubeSearch function to return total views of all of the videos of the search. We want it to return a json object containing all videos as well as the total views of all of those videos. Change our 'Get a list of videos' test to be: 
+Let's try to add some more functionality to our project. Say we want our youtubeSearch function to return total views of all of the videos of the search. We want it to return a json object containing all videos as well as the total views of all of those videos. Change our 'Get a list of videos' test to be:
 
 ```javascript
   it('Get a list of videos', () => {
@@ -190,7 +194,7 @@ Cool! Lets run `yarn testit` to check if we did it right.
 
 Great! We're awesome coders 😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎😎.
 
-Now in order for the whole thing to work you're going to need to go to `src/index.js` and change `App`'s `search` function to be: 
+Now in order for the whole thing to work you're going to need to go to `src/index.js` and change `App`'s `search` function to be:
 
 ```javascript
     search = (text) => {
@@ -208,7 +212,7 @@ Now in order for the whole thing to work you're going to need to go to `src/inde
 <summary>In case nothing is working...</summary>
 <br>
 
-Your `Api.test.js` should look like: 
+Your `Api.test.js` should look like:
 
 ```javascript
 /* eslint-disable no-unused-vars */
@@ -243,7 +247,7 @@ describe('Get video tests', () => {
 });
 ```
 
-Your `youtube-api.js` should look like: 
+Your `youtube-api.js` should look like:
 
 ```javascript
 import axios from 'axios';
@@ -439,4 +443,3 @@ Please review the [slides](https://docs.google.com/presentation/d/12tgDnjBk6Xmp6
 * https://www.sitepoint.com/unit-test-javascript-mocha-chai/
 * https://www.npmtrends.com/
 * https://www.chaijs.com/
-
