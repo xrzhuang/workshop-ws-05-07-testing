@@ -71,7 +71,7 @@ if we wanted to have a bunch of test files in our test folder? Would we have to 
 
 🚀 Go into your `package.json` file and change the `"testit": "mocha --require @babel/register"` line to `"testit": "mocha 'src/test/**/*.js' --require @babel/register"`. Great! Now mocha will run all of the files in the test folder so we should feel comfortable making separate files to test different components of our app!
 
-Now, lets get some practice with Top Down Development and implement a new feature in our app.
+Now, lets get some practice with Test Driven Development and implement a new feature in our app.
 What this means is that we are going to write the test for our code *before* we write the actual function. Say we want
 to build a toy function that returns the total view count of all the videos displayed on the video list. First, think
 about exactly what we want this function's inputs and outputs to be, and then write the test in accordance to that; then, finally, you can write the function!
