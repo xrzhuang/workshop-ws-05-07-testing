@@ -66,9 +66,6 @@ that everything works as we expect! Great!
   If you received a 400 or 403 error, make sure you have a working API Key, it may have expired.
 </details>
 
-What just happened? Mocha ran our test file at `src/test/Api.test.js` and told us
-that everything works as we expect! Great!
-
 We have just one file under our test folder that tests one specific function. What
 if we wanted to have a bunch of test files in our test folder? Would we have to run `💻 yarn testit` for each of those files to make sure our app is working correctly? Well, we could... but there's a better way! Let's tell `yarn testit` to run all the files in the test folder and tell us the results from all of them!
 
