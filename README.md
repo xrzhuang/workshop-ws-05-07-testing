@@ -1,6 +1,6 @@
 ## Testing
 
-We're going to add some unit tests to the code from sa4. Go ahead and fork this repo and clone it locally. It should be the same as your sa4 code, but clone this one just to keep things consistent. Once you clone the repo, don't forget to start out with a `yarn add`.
+We're going to add some unit tests to the code from sa4. Go ahead and fork this repo and clone it locally. It should be the same as your sa4 code, but clone this one just to keep things consistent. Once you clone the repo, don't forget to start out with a `yarn install`.
 
 ## Mocha and Chai Testing
 
