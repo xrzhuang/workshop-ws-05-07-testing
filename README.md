@@ -66,6 +66,31 @@ that everything works as we expect! Great!
   If you received a 400 or 403 error, make sure you have a working API Key, it may have expired.
 </details>
 
+What just happened? Mocha ran our test file at `src/test/Api.test.js` and told us
+that everything works as we expect! Great!
+
+We have just one file under our test folder that tests one specific function. What
+if we wanted to have a bunch of test files in our test folder? Would we have to run `💻 yarn testit` for each of those files to make sure our app is working correctly? Well, we could... but there's a better way! Let's tell `yarn testit` to run all the files in the test folder and tell us the results from all of them!
+
+🚀 Go into your `package.json` file and change the `"testit": "mocha --require @babel/register"` line to `"testit": "mocha 'src/test/**/*.js' --require @babel/register"`. Great! Now mocha will run all of the files in the test folder so we should feel comfortable making separate files to test different components of our app!
+
+Now, lets get some practice with Top Down Development and implement a new feature in our app.
+What this means is that we are going to write the test for our code *before* we write the actual function. Say we want
+to build a toy function that returns the total view count of all the videos displayed on the video list. First, think
+about exactly what we want this function's inputs and outputs to be, and then write the test in accordance to that; then, finally, you can write the function!
+
+We want to create a function viewCountByVideo that takes one input: the ID of a video, and outputs a number. 
+
+🚀 add this code below our previous test.
+```javascript
+  it('Get view count of video', () => {
+    return viewCountByVideo('TqtLNpkerfo')
+      .then((response) => {
+        expect(response).to.be.a('Number');
+      });
+  });
+```
+
 
 ```javascript
 /* eslint-disable no-unused-vars */
